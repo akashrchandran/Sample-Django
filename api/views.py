@@ -42,7 +42,6 @@ def login(request):
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def upload_file(request):
-    parser_classes = (MultiPartParser,)
     if 'file' not in request.data:
         return Response({'detail': 'No file was included in the request'}, status=status.HTTP_400_BAD_REQUEST)
     file = request.data['file']
