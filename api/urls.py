@@ -1,16 +1,17 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from . import views
+from .views import (AddView, DivideView, DownloadFileView, LoginView,
+                    MultiplyView, RegisterView, SubtractView, UploadFileView)
 
 urlpatterns = [
-    path('register/', views.register, name='register'),
-    path('login/', views.login, name='login'),
+    path('register/', RegisterView.as_view(), name='register'),
+    path('login/', LoginView.as_view(), name='login'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('upload/', views.upload_file, name='upload_file'),
-    path('download/<int:pk>/', views.download_file, name='download_file'),
-    path('add/', views.add, name='add'),
-    path('subtract/', views.subtract, name='subtract'),
-    path('multiply/', views.multiply, name='multiply'),
-    path('divide/', views.divide, name='divide'),
+    path('upload/', UploadFileView.as_view(), name='upload_file'),
+    path('download/<int:pk>/', DownloadFileView.as_view(), name='download_file'),
+    path('add/', AddView.as_view(), name='add'),
+    path('subtract/', SubtractView.as_view(), name='subtract'),
+    path('multiply/', MultiplyView.as_view(), name='multiply'),
+    path('divide/', DivideView.as_view(), name='divide'),
 ]

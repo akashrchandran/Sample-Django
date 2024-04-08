@@ -27,3 +27,11 @@ class FileSerializer(serializers.ModelSerializer):
         model = File
         fields = '__all__'
         read_only_fields = ('user',)
+
+
+class ArithmeticSerializer(serializers.Serializer):
+    num1 = serializers.IntegerField()
+    num2 = serializers.IntegerField()
+
+class DummySerializer(serializers.Serializer):
+    pass
