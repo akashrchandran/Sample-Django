@@ -6,8 +6,8 @@ This is a sample Django Rest Framework API that allows users to register, login,
 ## API Documentation
 
 The API documentation is available at the following link: 
-1. Swagger UI: [https://sample-django-7lfj.onrender.com/docs/](https://sample-django-7lfj.onrender.com/docs/)
-2. Redoc: [https://sample-django-7lfj.onrender.com/redoc/](https://sample-django-7lfj.onrender.com/redoc)
+1. Swagger UI: [https://sample-django-7lfj.onrender.com/api/docs/](https://sample-django-7lfj.onrender.com/api/docs/)
+2. Redoc: [https://sample-django-7lfj.onrender.com/api/redoc/](https://sample-django-7lfj.onrender.com/api/redoc)
 
 ## API Endpoints
 
