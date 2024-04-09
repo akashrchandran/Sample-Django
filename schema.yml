@@ -1,12 +1,13 @@
 openapi: 3.0.3
 info:
   title: Tiny Share API
-  version: 1.0.0
-  description: A simple file sharing API
+  version: 2.0.0
+  description: A simple file sharing API made with Django and Django Rest Framework.
 paths:
   /api/add/:
     post:
       operationId: api_add_create
+      description: Add two numbers
       tags:
       - api
       requestBody:
@@ -33,6 +34,7 @@ paths:
   /api/divide/:
     post:
       operationId: api_divide_create
+      description: Divide two numbers
       tags:
       - api
       requestBody:
@@ -59,6 +61,7 @@ paths:
   /api/download/{id}/:
     get:
       operationId: api_download_retrieve
+      description: Download a file using the file ID
       parameters:
       - in: path
         name: id
@@ -75,6 +78,7 @@ paths:
   /api/login/:
     post:
       operationId: api_login_create
+      description: Authenticate a user
       tags:
       - api
       requestBody:
@@ -102,6 +106,7 @@ paths:
   /api/multiply/:
     post:
       operationId: api_multiply_create
+      description: Multiply two numbers
       tags:
       - api
       requestBody:
@@ -155,6 +160,7 @@ paths:
   /api/register/:
     post:
       operationId: api_register_create
+      description: Create a new user
       tags:
       - api
       requestBody:
@@ -182,6 +188,7 @@ paths:
   /api/subtract/:
     post:
       operationId: api_subtract_create
+      description: Subtract two numbers
       tags:
       - api
       requestBody:
@@ -208,6 +215,7 @@ paths:
   /api/upload/:
     post:
       operationId: api_upload_create
+      description: Upload a file
       tags:
       - api
       requestBody:
