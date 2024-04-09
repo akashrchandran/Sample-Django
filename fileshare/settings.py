@@ -74,8 +74,8 @@ SIMPLE_JWT = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Tiny Share API',
-    'DESCRIPTION': 'A simple file sharing API',
-    'VERSION': '1.0.0',
+    'DESCRIPTION': 'A simple file sharing API made with Django and Django Rest Framework.',
+    'VERSION': '2.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
 

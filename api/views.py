@@ -7,8 +7,10 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .models import File
 from .serializers import ArithmeticSerializer, DummySerializer, FileSerializer, LoginSerializer, UserSerializer
 from .util import CustomResponse
+from api import schema
 
 
+@schema.register_schema
 class RegisterView(views.APIView):
     serializer_class = UserSerializer
 
@@ -16,10 +18,10 @@ class RegisterView(views.APIView):
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             User.objects.create_user(**serializer.validated_data)
-            return CustomResponse("User successfully created", status=status.HTTP_201_CREATED)
+            return CustomResponse(response="User successfully created", status=status.HTTP_201_CREATED)
         return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@schema.login_schema
 class LoginView(views.APIView):
     serializer_class = LoginSerializer
 
@@ -35,6 +37,7 @@ class LoginView(views.APIView):
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+@schema.file_upload_schema
 class UploadFileView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = FileSerializer
@@ -51,7 +54,7 @@ class UploadFileView(views.APIView):
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@schema.download_file_schema
 class DownloadFileView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = DummySerializer
@@ -63,7 +66,7 @@ class DownloadFileView(views.APIView):
         except File.DoesNotExist:
             return CustomResponse(messages='File not found', status=status.HTTP_404_NOT_FOUND)
 
-
+@schema.add_schema
 class AddView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ArithmeticSerializer
@@ -77,7 +80,7 @@ class AddView(views.APIView):
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@schema.subtract_schema
 class SubtractView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ArithmeticSerializer
@@ -91,7 +94,7 @@ class SubtractView(views.APIView):
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@schema.multiply_schema
 class MultiplyView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ArithmeticSerializer
@@ -105,7 +108,7 @@ class MultiplyView(views.APIView):
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@schema.divide_schema
 class DivideView(views.APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = ArithmeticSerializer
