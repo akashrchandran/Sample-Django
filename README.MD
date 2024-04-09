@@ -10,17 +10,22 @@ The API documentation is available at the following link:
 2. Redoc: [https://sample-django-7lfj.onrender.com/api/redoc/](https://sample-django-7lfj.onrender.com/api/redoc)
 
 ## API Endpoints
-
 | Endpoint              | Method | Description          | Authentication Required | Request Body Parameters |
 |-----------------------|--------|----------------------|-------------------------|--------------------|
 | `/api/register/`      | POST   | Register User        | No                      | `username`, `password`, `email` |
 | `/api/login/`         | POST   | Login User           | No                      | `username`, `password` |
 | `/api/upload/`        | POST   | Upload File          | Yes                     | `file` |
-| `/api/download/{id}`      | GET    | Download File        | Yes                     | `None` |
+| `/api/download/{id}`  | GET    | Download File        | Yes                     | `None` |
 | `/api/add/`           | POST   | Add Number           | Yes                     | `num1`, `num2` |
 | `/api/subtract/`      | POST   | Subtract Number      | Yes                     | `num1`, `num2` |
 | `/api/multiply/`      | POST   | Multiply Number      | Yes                     | `num1`, `num2` |
 | `/api/divide/`        | POST   | Divide Number        | Yes                     | `num1`, `num2` |
+| `/api/products/`      | GET    | Get All Products     | No                      | `None` |
+| `/api/products/{id}`  | GET    | Get Product by ID    | No                      | `None` |
+| `/api/products/`      | POST   | Create Product       | Yes                     | `name`, `description`, `price` |
+| `/api/products/{id}`  | PUT    | Update Product       | Yes                     | `name`, `description`, `price` |
+| `/api/products/{id}`  | PATCH  | Patch Product        | Yes                     | `name`, `description`, `price` |
+| `/api/products/{id}`  | DELETE | Delete Product       | Yes                     | `None` |
 
 ## Authentication
 
