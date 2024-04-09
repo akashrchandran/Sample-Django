@@ -77,6 +77,7 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'A simple file sharing API made with Django and Django Rest Framework.',
     'VERSION': '2.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
+    'COMPONENT_SPLIT_REQUEST': True
 }
 
 ROOT_URLCONF = "fileshare.urls"

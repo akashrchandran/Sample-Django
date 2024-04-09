@@ -14,7 +14,13 @@ login_schema = extend_schema(
 
 file_upload_schema = extend_schema(
     description="Upload a file",
-    request=serializers.FileSerializer,
+    request={
+            "multipart/form-data": {
+                "type": "object",
+                "properties": {
+                    "file": {"type": "string", "format": "binary"}},
+            },
+        },
 )
 
 download_file_schema = extend_schema(
