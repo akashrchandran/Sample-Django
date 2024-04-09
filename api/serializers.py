@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from .models import File
+from .models import File, Product
 
 User = get_user_model()
 
@@ -32,6 +32,11 @@ class FileSerializer(serializers.ModelSerializer):
 class ArithmeticSerializer(serializers.Serializer):
     num1 = serializers.IntegerField()
     num2 = serializers.IntegerField()
+
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'description', 'price']
 
 class DummySerializer(serializers.Serializer):
     pass

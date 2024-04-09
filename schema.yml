@@ -14,13 +14,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
         required: true
       security:
       - jwtAuth: []
@@ -41,13 +41,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
         required: true
       security:
       - jwtAuth: []
@@ -85,13 +85,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Login'
+              $ref: '#/components/schemas/LoginRequest'
         required: true
       security:
       - jwtAuth: []
@@ -113,13 +113,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
         required: true
       security:
       - jwtAuth: []
@@ -129,6 +129,167 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Arithmetic'
+          description: ''
+  /api/products/:
+    get:
+      operationId: api_products_list
+      description: Operations with Products
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    post:
+      operationId: api_products_create
+      description: Operations with Products
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+  /api/products/{id}/:
+    get:
+      operationId: api_products_list_2
+      description: Operations with Products
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this product.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    put:
+      operationId: api_products_update
+      description: Operations with Products
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this product.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductRequest'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    patch:
+      operationId: api_products_partial_update
+      description: Operations with Products
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this product.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProductRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProductRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProductRequest'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+          description: ''
+    delete:
+      operationId: api_products_destroy
+      description: Operations with Products
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this product.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
           description: ''
   /api/refresh/:
     post:
@@ -142,13 +303,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/TokenRefresh'
+              $ref: '#/components/schemas/TokenRefreshRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/TokenRefresh'
+              $ref: '#/components/schemas/TokenRefreshRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/TokenRefresh'
+              $ref: '#/components/schemas/TokenRefreshRequest'
         required: true
       responses:
         '200':
@@ -167,13 +328,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/User'
+              $ref: '#/components/schemas/UserRequest'
         required: true
       security:
       - jwtAuth: []
@@ -195,13 +356,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/Arithmetic'
+              $ref: '#/components/schemas/ArithmeticRequest'
         required: true
       security:
       - jwtAuth: []
@@ -220,16 +381,13 @@ paths:
       - api
       requestBody:
         content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/File'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/File'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/File'
-        required: true
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
       security:
       - jwtAuth: []
       responses:
@@ -242,6 +400,16 @@ paths:
 components:
   schemas:
     Arithmetic:
+      type: object
+      properties:
+        num1:
+          type: integer
+        num2:
+          type: integer
+      required:
+      - num1
+      - num2
+    ArithmeticRequest:
       type: object
       properties:
         num1:
@@ -282,17 +450,86 @@ components:
       required:
       - password
       - username
+    LoginRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 1
+        password:
+          type: string
+          minLength: 1
+      required:
+      - password
+      - username
+    PatchedProductRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        description:
+          type: string
+          minLength: 1
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 200
+        description:
+          type: string
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+      required:
+      - description
+      - id
+      - name
+      - price
+    ProductRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 200
+        description:
+          type: string
+          minLength: 1
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,3}(?:\.\d{0,2})?$
+      required:
+      - description
+      - name
+      - price
     TokenRefresh:
       type: object
       properties:
         access:
           type: string
           readOnly: true
+      required:
+      - access
+    TokenRefreshRequest:
+      type: object
+      properties:
         refresh:
           type: string
           writeOnly: true
+          minLength: 1
       required:
-      - access
       - refresh
     User:
       type: object
@@ -305,6 +542,28 @@ components:
           maxLength: 150
         password:
           type: string
+          maxLength: 128
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+      required:
+      - password
+      - username
+    UserRequest:
+      type: object
+      properties:
+        username:
+          type: string
+          minLength: 1
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        password:
+          type: string
+          minLength: 1
           maxLength: 128
         email:
           type: string

@@ -46,3 +46,9 @@ divide_schema = extend_schema(
     description="Divide two numbers",
     request=serializers.ArithmeticSerializer,
 )
+
+product_schema = extend_schema(
+    description="Operations with Products",
+    responses={200: serializers.ProductSerializer(many=True)},
+    request=serializers.ProductSerializer,
+)

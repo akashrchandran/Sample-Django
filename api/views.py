@@ -1,13 +1,15 @@
 from django.contrib.auth.models import User
 from django.http import FileResponse
-from rest_framework import status, views
+from rest_framework import status, views, viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework_simplejwt.tokens import RefreshToken
 
-from .models import File
-from .serializers import ArithmeticSerializer, DummySerializer, FileSerializer, LoginSerializer, UserSerializer
+from . import schema
+from .models import File, Product
+from .serializers import (ArithmeticSerializer, DummySerializer,
+                          FileSerializer, LoginSerializer, ProductSerializer,
+                          UserSerializer)
 from .util import CustomResponse
-from api import schema
 
 
 @schema.register_schema
@@ -123,3 +125,9 @@ class DivideView(views.APIView):
             return CustomResponse(response=num1 / num2, status=status.HTTP_200_OK)
         else:
             return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@schema.product_schema
+class ProductViewSet(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+    permission_classes = [IsAuthenticated]
