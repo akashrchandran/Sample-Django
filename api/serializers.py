@@ -30,8 +30,8 @@ class FileSerializer(serializers.ModelSerializer):
 
 
 class ArithmeticSerializer(serializers.Serializer):
-    num1 = serializers.IntegerField()
-    num2 = serializers.IntegerField()
+    num1 = serializers.FloatField()
+    num2 = serializers.FloatField()
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
