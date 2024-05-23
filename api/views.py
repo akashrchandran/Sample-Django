@@ -50,7 +50,7 @@ class UploadFileView(views.APIView):
             file = serializer.validated_data.get('file')
             if file.size > 5000000:  # limit file size to 5MB
                 return CustomResponse(messages='The file is too large', status=status.HTTP_400_BAD_REQUEST)
-            file_model = File(file=file, user=request.user)
+            file_model = File(file=file, user=request.user, name=file.name, file_type=file.content_type)
             file_model.save()
             return CustomResponse(response=FileSerializer(file_model).data, status=status.HTTP_201_CREATED)
         else:

@@ -26,7 +26,7 @@ class FileSerializer(serializers.ModelSerializer):
     class Meta:
         model = File
         fields = '__all__'
-        read_only_fields = ('user',)
+        read_only_fields = ('user', 'uploaded_at', 'file_type', "name")
 
 
 class ArithmeticSerializer(serializers.Serializer):
