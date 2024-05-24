@@ -52,3 +52,7 @@ product_schema = extend_schema(
     responses={200: serializers.ProductSerializer(many=True)},
     request=serializers.ProductSerializer,
 )
+
+get_all_files_schema = extend_schema(
+    description="Get all files",
+)

@@ -67,7 +67,15 @@ class DownloadFileView(views.APIView):
             return FileResponse(file.file, as_attachment=True)
         except File.DoesNotExist:
             return CustomResponse(messages='File not found', status=status.HTTP_404_NOT_FOUND)
+        
+class GetAllFilesView(views.APIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = DummySerializer
 
+    def get(self, request):
+        files = File.objects.filter(user=request.user)
+        return CustomResponse(response=FileSerializer(files, many=True).data, status=status.HTTP_200_OK)
+    
 @schema.add_schema
 class AddView(views.APIView):
     permission_classes = [IsAuthenticated]

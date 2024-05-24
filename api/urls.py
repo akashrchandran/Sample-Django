@@ -12,6 +12,7 @@ from .views import (
     RegisterView,
     SubtractView,
     UploadFileView,
+    GetAllFilesView
 )
 
 router = DefaultRouter()
@@ -23,6 +24,7 @@ urlpatterns = [
     path("refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("upload/", UploadFileView.as_view(), name="upload_file"),
     path("download/<int:pk>/", DownloadFileView.as_view(), name="download_file"),
+    path("files/", GetAllFilesView.as_view(), name="files"),
     path("add/", AddView.as_view(), name="add"),
     path("subtract/", SubtractView.as_view(), name="subtract"),
     path("multiply/", MultiplyView.as_view(), name="multiply"),
