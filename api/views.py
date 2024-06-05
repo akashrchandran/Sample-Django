@@ -45,16 +45,18 @@ class UploadFileView(views.APIView):
     serializer_class = FileSerializer
 
     def post(self, request):
-        serializer = self.serializer_class(data=request.data)
-        if serializer.is_valid():
-            file = serializer.validated_data.get('file')
+        files = request.FILES.getlist('files')  # Get the list of files
+        file_models = []
+    
+        for file in files:
             if file.size > 5000000:  # limit file size to 5MB
-                return CustomResponse(messages='The file is too large', status=status.HTTP_400_BAD_REQUEST)
+                return CustomResponse(messages='One or more files are too large', status=status.HTTP_400_BAD_REQUEST)
+    
             file_model = File(file=file, user=request.user, name=file.name, file_type=file.content_type)
             file_model.save()
-            return CustomResponse(response=FileSerializer(file_model).data, status=status.HTTP_201_CREATED)
-        else:
-            return CustomResponse(messages=serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            file_models.append(file_model)
+    
+        return CustomResponse(response=FileSerializer(file_models, many=True).data, status=status.HTTP_201_CREATED)
 
 @schema.download_file_schema
 class DownloadFileView(views.APIView):
