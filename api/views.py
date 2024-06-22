@@ -50,9 +50,8 @@ class UploadFileView(views.APIView):
         if file.size > 5000000:  # limit file size to 5MB
             return CustomResponse(messages='File is too large', status=status.HTTP_400_BAD_REQUEST)
     
-        file_model = File(file=file, user=request.user, name=file.name, file_type=file.content_type)
+        file_model = File(file=file, user=request.user, name=file.name, file_type=file.content_type, file_size=file.size)
         file_model.save()
-    
         return CustomResponse(response=FileSerializer(file_model).data, status=status.HTTP_201_CREATED)
 
 @schema.download_file_schema

@@ -16,6 +16,7 @@ class File(models.Model):
     file = models.FileField(storage=gd_storage)
     name = models.CharField(max_length=200)
     uploaded_at = models.DateTimeField(auto_now_add=True)
+    file_size = models.IntegerField()
     file_type = models.CharField(max_length=20)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
