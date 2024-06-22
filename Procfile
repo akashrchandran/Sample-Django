@@ -1,0 +1,1 @@
+web: sh build.sh && gunicorn your_project_name.wsgi
