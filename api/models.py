@@ -10,7 +10,7 @@ permission =  GoogleDriveFilePermission(
 
 User = get_user_model()
 
-gd_storage = GoogleDriveStorage(json_keyfile_path="client_secrets.json")
+gd_storage = GoogleDriveStorage()
 
 class File(models.Model):
     file = models.FileField(storage=gd_storage)
