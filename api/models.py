@@ -1,10 +1,19 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from gdstorage.storage import GoogleDriveStorage
+from gdstorage.storage import GoogleDriveStorage, GoogleDrivePermissionType, GoogleDrivePermissionRole, GoogleDriveFilePermission
+
+permission =  GoogleDriveFilePermission(
+   GoogleDrivePermissionRole.OWNER,
+   GoogleDrivePermissionType.ANYONE
+)
 
 User = get_user_model()
 
+gd_storage = GoogleDriveStorage(json_keyfile_path="client_secrets.json")
+
 class File(models.Model):
-    file = models.FileField(upload_to='uploads/')
+    file = models.FileField(storage=gd_storage)
     name = models.CharField(max_length=200)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     file_type = models.CharField(max_length=20)

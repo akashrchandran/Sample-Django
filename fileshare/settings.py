@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "drf_spectacular",
+    "gdstorage",
 
     "api",
 ]
@@ -83,6 +84,9 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'COMPONENT_SPLIT_REQUEST': True
 }
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = os.environ.get('GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE')
+GOOGLE_DRIVE_STORAGE_ROOT_FOLDER_ID = os.environ.get('GOOGLE_DRIVE_STORAGE_ROOT_FOLDER_ID')
 
 ROOT_URLCONF = "fileshare.urls"
 
